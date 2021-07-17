@@ -255,7 +255,7 @@ public class Pantalla2 extends AppCompatActivity {
 
         for (int i = 0;  i < lista.size(); i++){
 
-            ArrayLista.add(lista.get(i).getImage()+lista.get(i).getNombre()+lista.get(i).getTelefono());
+            ArrayLista.add(lista.get(i).getImage()+" | "+lista.get(i).getNombre()+"\n"+lista.get(i).getTelefono());
         }
     }
 
