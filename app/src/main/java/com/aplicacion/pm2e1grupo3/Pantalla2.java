@@ -133,16 +133,19 @@ public class Pantalla2 extends AppCompatActivity {
         btnActualizar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                Intent intent = new Intent(getApplicationContext(), PantallaActualizar.class);
-                intent.putExtra("ID", Dato);
-                intent.putExtra("Nombre", Nombre);
-                intent.putExtra("Telefono", Telefono);
-                intent.putExtra("Latitud", Latitud);
-                intent.putExtra("Longitud", Longitud);
-                intent.putExtra("Foto", Foto);
-                startActivity(intent);
-                finish();
+                if (SelectedRow==true) {
+                    Intent intent = new Intent(getApplicationContext(), PantallaActualizar.class);
+                    intent.putExtra("ID", Dato);
+                    intent.putExtra("Nombre", Nombre);
+                    intent.putExtra("Telefono", Telefono);
+                    intent.putExtra("Latitud", Latitud);
+                    intent.putExtra("Longitud", Longitud);
+                    intent.putExtra("Foto", Foto);
+                    startActivity(intent);
+                    finish();
+                else {
+                    Toast.makeText(Pantalla2.this, "Seleccione un registro", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
