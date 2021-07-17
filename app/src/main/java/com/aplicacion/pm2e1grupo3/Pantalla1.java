@@ -93,7 +93,9 @@ public class Pantalla1 extends AppCompatActivity {
             public void onClick(View v) {
                 validar();
                 aggperson();
-
+                Intent intent = new Intent(Pantalla1.this, Pantalla1.class);
+                startActivity(intent);
+                finish();
             }
         });
 
