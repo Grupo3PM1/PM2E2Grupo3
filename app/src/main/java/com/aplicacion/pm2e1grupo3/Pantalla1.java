@@ -52,7 +52,7 @@ public class Pantalla1 extends AppCompatActivity {
     ImageView ObjImagen;
     TextView txtlat, txtlong;
     Bitmap photo;
-
+    boolean retorno;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,9 +93,6 @@ public class Pantalla1 extends AppCompatActivity {
             public void onClick(View v) {
                 validar();
                 aggperson();
-                Intent intent = new Intent(Pantalla1.this, Pantalla1.class);
-                startActivity(intent);
-                finish();
             }
         });
 
@@ -230,7 +227,7 @@ public class Pantalla1 extends AppCompatActivity {
     }
 
     public boolean validar(){
-        boolean retorno= true;
+        retorno= true;
 
         String nom= etnombre.getText().toString();
         String tel= ettelefono.getText().toString();
@@ -297,8 +294,15 @@ public class Pantalla1 extends AppCompatActivity {
             }
 
         };
+
         RequestQueue queue = Volley.newRequestQueue(this);
         queue.add(stringRequest);
+
+        if(retorno = true){
+            Intent intent = new Intent(Pantalla1.this, Pantalla1.class);
+            startActivity(intent);
+            finish();
+        }
     }
 
    public static String GetStringImage(ImageView ObjImagen)
