@@ -95,7 +95,7 @@ public class Pantalla1 extends AppCompatActivity {
         btnsalvados.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent mapa = new Intent(getApplicationContext(), Pantalla3.class);
+                Intent mapa = new Intent(getApplicationContext(), Pantalla2.class);
                 startActivity(mapa);
             }
         });

@@ -87,7 +87,6 @@ public class Pantalla2 extends AppCompatActivity {
                 view.setSelected(true);
 
                 // AQUÍ SE OBTENDRAN LOS DATOS DEL ITEM SELECCIONADO
-                ObtenerLista();
 
             }
         });
@@ -95,7 +94,8 @@ public class Pantalla2 extends AppCompatActivity {
 
 
     private void ObtenerLista() {
-        String URL = "";
+        String URL = RestApiMethod.ApiGetUrl;
+
         client.post(URL, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
@@ -134,7 +134,6 @@ public class Pantalla2 extends AppCompatActivity {
         catch (Exception e1){
             e1.printStackTrace();
         }
-
     }
 
     private void FillList() {
@@ -145,49 +144,5 @@ public class Pantalla2 extends AppCompatActivity {
 
             ArrayLista.add(lista.get(i).getNombre());
         }
-
     }
-
-    /*private void buscarProducto(String URL) {
-        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(URL, new Response.Listener<JSONArray>() {
-            @Override
-            public void onResponse(JSONArray response) {
-                JSONObject jsonObject = null;
-                lista Item = null;
-                ArrayLista = new ArrayList<lista>();
-
-                for (int i = 0; i < response.length(); i++){
-                    jsonObject = response.getJSONObject(i);
-                    Item = new lista();
-                    //String texto=jsonObject.getString("Apellido");
-                    Item.setID(jsonObject.getInt("id"));
-                    playerModel.setName(dataobj.getString("name"));
-
-                    especieAnimal.setText(item.getEspecie());
-                    Item.setNombre(jsonObject.getString("nombre"));
-                    Item.setTelefono(jsonObject.getString("telefono"));
-                    Item.setLatitud(jsonObject.getString("latitud"));
-                    Item.setLongitud(jsonObject.getString("longitud"));
-                    Item.setImage(jsonObject.getString("foto"));
-                    ArrayLista.add(Item);
-                }
-
-                for (int i = 0; i < response.length(); i++) {
-                    try {
-                        jsonObject = response.getJSONObject(i);
-                        etxtPais.setText(jsonObject.getString("De_pais"));
-                    } catch (JSONException e) {
-                        Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                }
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getApplicationContext(), "Error de conexion", Toast.LENGTH_SHORT).show();
-            }
-        });
-        RequestQueue queue = Volley.newRequestQueue(this);
-        queue.add(jsonArrayRequest);
-    }*/
 }
