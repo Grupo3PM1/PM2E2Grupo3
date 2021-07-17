@@ -117,8 +117,8 @@ public class Pantalla1 extends AppCompatActivity {
         mlocManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, (LocationListener) Local);
         mlocManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, (LocationListener) Local);
 
-        txtlat.setText("Localización agregada");
-        txtlong.setText("");
+        //txtlat.setText("Localización agregada");
+        //txtlong.setText("");
     }
 
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
@@ -167,19 +167,19 @@ public class Pantalla1 extends AppCompatActivity {
 
             String Text1 =  ""+loc.getLatitude();
             String Text2 =  ""+loc.getLongitude();
-            txtlat.setText(Text1);
-            txtlong.setText(Text2);
+            etlatitud.setText(Text1);
+            etlongitud.setText(Text2);
             this.pantalla1.setLocation(loc);
         }
 
         @Override
         public void onProviderDisabled(String provider) {
-            txtlat.setText("GPS Desactivado");
+            //txtlat.setText("GPS Desactivado");
         }
 
         @Override
         public void onProviderEnabled(String provider) {
-            txtlat.setText("GPS Activado");
+            //txtlat.setText("GPS Activado");
         }
 
         @Override
