@@ -109,7 +109,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
                 longitudeGPS = String.valueOf(location.getLongitude());
                 latitudeGPS = String.valueOf(location.getLatitude());
-
+                Intent intent = new Intent(getApplicationContext(), Pantalla1.class);
+                intent.putExtra("longitud", longitudeGPS);
+                intent.putExtra("latitud", latitudeGPS);
+                startActivity(new Intent(intent));
 
             }
             @Override
@@ -128,9 +131,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             }
         };
         locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER,0,0,locationListener);
-        Intent intent = new Intent(getApplicationContext(), Pantalla1.class);
-        intent.putExtra("longitud", longitudeGPS);
-        intent.putExtra("latitud", latitudeGPS);
-        startActivity(new Intent(intent));
+
     }
 }

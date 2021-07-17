@@ -55,8 +55,7 @@ public class Pantalla1 extends AppCompatActivity {
         ettelefono = (EditText)findViewById(R.id.ettelefono);
         etlatitud = (EditText)findViewById(R.id.etlatitud);
         etlongitud = (EditText)findViewById(R.id.etlongitud);
-        txtlat = (TextView) findViewById(R.id.txtlatitud);
-        txtlong = (TextView) findViewById(R.id.txtlongitud);
+
 
         ObjImagen = (ImageView) findViewById(R.id.fotografia);
         btnfoto = (Button) findViewById(R.id.btnfoto);
