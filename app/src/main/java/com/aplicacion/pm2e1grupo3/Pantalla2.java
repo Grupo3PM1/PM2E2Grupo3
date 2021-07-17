@@ -29,19 +29,23 @@ import org.json.JSONObject;
 import com.aplicacion.pm2e1grupo3.tablas.lista;
 
 import java.util.ArrayList;
+import com.loopj.android.http.*;
+
+import cz.msebera.android.httpclient.Header;
 
 public class Pantalla2 extends AppCompatActivity {
 
     Button btnregresar;
     EditText buscar;
     ListView Lista;
-    ArrayList<lista> ArrayLista;
-    ArrayList<String> ArrayItem;
+    ArrayAdapter<lista> a;
+    private AsyncHttpClient client;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pantalla2);
+        client = new AsyncHttpClient();
 
         btnregresar = (Button)findViewById(R.id.btnregresar);
         btnregresar.setOnClickListener(new View.OnClickListener() {
@@ -54,10 +58,8 @@ public class Pantalla2 extends AppCompatActivity {
 
 
         ObtenerLista();  //FUNCION PARA EXTRAER DATOS DE LA BD
-
         Lista = (ListView) findViewById(R.id.lista);
-        ArrayAdapter<String> adp = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_single_choice, ArrayLista);
-        Lista.setAdapter(adp);
+
 
         buscar = (EditText) findViewById(R.id.txtbuscar);
         buscar.addTextChangedListener(new TextWatcher() {
@@ -67,7 +69,7 @@ public class Pantalla2 extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                adp.getFilter().filter(s);
+                a.getFilter().filter(s);
             }
 
             @Override
@@ -83,6 +85,7 @@ public class Pantalla2 extends AppCompatActivity {
                 view.setSelected(true);
 
                 // AQUÍ SE OBTENDRAN LOS DATOS DEL ITEM SELECCIONADO
+                ObtenerLista();
 
             }
         });
@@ -90,24 +93,47 @@ public class Pantalla2 extends AppCompatActivity {
 
 
     private void ObtenerLista() {
+        String URL = "";
+        client.post(URL, new AsyncHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                if(statusCode == 200){
+                    listarRegistros(new String (responseBody));
+                }
+            }
 
-        lista Item = null;
-        ArrayLista = new ArrayList<lista>();
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
 
-        while (){
-            Item = new lista();
-            Item.setID(cursor.getInt(0));
-            Item.setNombre(cursor.getString(2));
-            Item.setLatitud(cursor.getString(3));
-            Item.setLongitud(cursor.getString(4));
-            Item.setImage(cursor.getString(5));
-            ArrayLista.add(Item);
+            }
+        });
+
+    }
+
+    private void listarRegistros(String respuesta){
+        ArrayList <lista> lista = new ArrayList<lista>();
+        try {
+            JSONArray jsonAreglo = new JSONArray(respuesta);
+            for(int i=0;i<jsonAreglo.length();i++){
+                lista l = new lista();
+                l.setID(jsonAreglo.getJSONObject(i).getInt("id"));
+                l.setNombre(jsonAreglo.getJSONObject(i).getString("nombre"));
+                l.setTelefono(jsonAreglo.getJSONObject(i).getString("telefono"));
+                l.setLatitud(jsonAreglo.getJSONObject(i).getString("latitud"));
+                l.setLongitud(jsonAreglo.getJSONObject(i).getString("longitud"));
+                //l.setImage(jsonAreglo.getJSONObject(i).get("foto"));
+                lista.add(l);
+            }
+
+            a = new ArrayAdapter(this, android.R.layout.simple_list_item_single_choice, lista);
+            Lista.setAdapter(a);
+        }
+        catch (Exception e1){
+            e1.printStackTrace();
         }
 
-        // AQUÍ SE OBTENDRAN LOS DATOS DIRECTAMENTE DESDE LA BD CON CONSULTA SQL
-
-        FillList();
     }
+    //FillList();
 
     private void FillList() {
 
@@ -115,11 +141,30 @@ public class Pantalla2 extends AppCompatActivity {
 
     }
 
-    private void buscarProducto(String URL) {
+    /*private void buscarProducto(String URL) {
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(URL, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
                 JSONObject jsonObject = null;
+                lista Item = null;
+                ArrayLista = new ArrayList<lista>();
+
+                for (int i = 0; i < response.length(); i++){
+                    jsonObject = response.getJSONObject(i);
+                    Item = new lista();
+                    //String texto=jsonObject.getString("Apellido");
+                    Item.setID(jsonObject.getInt("id"));
+                    playerModel.setName(dataobj.getString("name"));
+
+                    especieAnimal.setText(item.getEspecie());
+                    Item.setNombre(jsonObject.getString("nombre"));
+                    Item.setTelefono(jsonObject.getString("telefono"));
+                    Item.setLatitud(jsonObject.getString("latitud"));
+                    Item.setLongitud(jsonObject.getString("longitud"));
+                    Item.setImage(jsonObject.getString("foto"));
+                    ArrayLista.add(Item);
+                }
+
                 for (int i = 0; i < response.length(); i++) {
                     try {
                         jsonObject = response.getJSONObject(i);
@@ -137,5 +182,5 @@ public class Pantalla2 extends AppCompatActivity {
         });
         RequestQueue queue = Volley.newRequestQueue(this);
         queue.add(jsonArrayRequest);
-    }
+    }*/
 }

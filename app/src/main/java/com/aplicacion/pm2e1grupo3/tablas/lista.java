@@ -4,18 +4,29 @@ public class lista {
 
     private Integer ID;
     private String nombre;
+    private String telefono;
     private String latitud;
     private String longitud;
     private byte [] image;
 
     public lista(){}
 
-    public lista(Integer ID, String nombre, String latitud, String longitud, byte[] image) {
+
+
+   /* public lista(Integer ID, String nombre, String telefono, String latitud, String longitud, byte[] image) {
         this.ID = ID;
         this.nombre = nombre;
+        this.telefono = telefono;
         this.latitud = latitud;
         this.longitud = longitud;
         this.image = image;
+    }*/
+    public lista(Integer ID, String nombre, String telefono, String latitud, String longitud) {
+        this.ID = ID;
+        this.nombre = nombre;
+        this.telefono = telefono;
+        this.latitud = latitud;
+        this.longitud = longitud;
     }
 
     public Integer getID() {
@@ -32,6 +43,14 @@ public class lista {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
     }
 
     public String getLatitud() {
