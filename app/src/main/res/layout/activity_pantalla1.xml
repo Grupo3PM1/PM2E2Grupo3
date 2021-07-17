@@ -7,162 +7,140 @@
     android:background="@drawable/fondo"
     tools:context=".Pantalla1">
 
-    <ImageView
-        android:id="@+id/fotografia"
-        android:layout_width="130dp"
-        android:layout_height="128dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <Button
-        android:id="@+id/btnsalvar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginBottom="60dp"
-        android:backgroundTint="@color/teal_700"
-        android:text="SALVAR CONTACTO"
-        app:cornerRadius="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="39dp"
+            android:layout_marginTop="4dp"
+            app:srcCompat="@drawable/uth" />
 
-    <Button
-        android:id="@+id/btnfoto"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:backgroundTint="@color/teal_700"
-        android:text="TOMAR FOTO"
-        app:cornerRadius="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fotografia" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/btnsalvados"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="60dp"
-        android:backgroundTint="@color/teal_700"
-        android:text="CONTACTOS SALVADOS"
-        app:cornerRadius="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+            <ImageView
+                android:id="@+id/fotografia"
+                android:layout_width="130dp"
+                android:layout_height="128dp" />
 
-    <TextView
-        android:id="@+id/txtnombre"
-        android:layout_width="325dp"
-        android:layout_height="32dp"
-        android:layout_marginTop="232dp"
-        android:hint="Nombre"
-        android:textAlignment="textStart"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        </LinearLayout>
 
-    <TextView
-        android:id="@+id/txttelefono"
-        android:layout_width="325dp"
-        android:layout_height="32dp"
-        android:layout_marginTop="12dp"
-        android:hint="Telefono"
-        android:textAlignment="textStart"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.441"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etnombre" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
 
-    <EditText
-        android:id="@+id/ettelefono"
-        android:layout_width="325dp"
-        android:layout_height="46dp"
-        android:layout_marginTop="8dp"
-        android:ems="10"
-        android:inputType="number"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.458"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txttelefono" />
+            <Button
+                android:id="@+id/btnfoto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:backgroundTint="@color/teal_700"
+                android:gravity="center|center_horizontal"
+                android:text="TOMAR FOTO"
+                app:cornerRadius="20dp" />
+        </LinearLayout>
 
-    <EditText
-        android:id="@+id/etnombre"
-        android:layout_width="327dp"
-        android:layout_height="46dp"
-        android:layout_marginTop="8dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text=""
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.481"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtnombre" />
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp" />
 
-    <EditText
-        android:id="@+id/etlatitud"
-        android:layout_width="328dp"
-        android:layout_height="46dp"
-        android:layout_marginTop="4dp"
-        android:editable="false"
-        android:ems="10"
-        android:inputType="number"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.458"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtlatitud" />
+        <EditText
+            android:id="@+id/etnombre"
+            android:layout_width="327dp"
+            android:layout_height="46dp"
+            android:ems="10"
+            android:hint="Nombre"
+            android:inputType="textPersonName"
+            android:text="" />
 
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp" />
 
-    <TextView
-        android:id="@+id/txtlatitud"
-        android:layout_width="325dp"
-        android:layout_height="32dp"
-        android:layout_marginTop="12dp"
-        android:hint="Latitud"
-        android:textAlignment="textStart"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.453"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ettelefono" />
+        <EditText
+            android:id="@+id/ettelefono"
+            android:layout_width="325dp"
+            android:layout_height="46dp"
+            android:ems="10"
+            android:hint="Telefono"
+            android:inputType="number" />
 
-    <EditText
-        android:id="@+id/etlongitud"
-        android:layout_width="326dp"
-        android:layout_height="46dp"
-        android:layout_marginTop="4dp"
-        android:editable="false"
-        android:ems="10"
-        android:inputType="number"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.447"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtlongitud" />
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp" />
 
-    <TextView
-        android:id="@+id/txtlongitud"
-        android:layout_width="325dp"
-        android:layout_height="32dp"
-        android:layout_marginTop="12dp"
-        android:hint="Longitud"
-        android:textAlignment="textStart"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.453"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etlatitud" />
+        <EditText
+            android:id="@+id/etlatitud"
+            android:layout_width="328dp"
+            android:layout_height="46dp"
+            android:editable="false"
+            android:ems="10"
+            android:hint="Latitud"
+            android:inputType="number" />
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="55dp"
-        android:layout_height="39dp"
-        android:layout_marginTop="4dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/uth" />
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp" />
+
+        <EditText
+            android:id="@+id/etlongitud"
+            android:layout_width="326dp"
+            android:layout_height="46dp"
+            android:editable="false"
+            android:ems="10"
+            android:hint="Longitud"
+            android:inputType="number" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp" />
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal">
+
+                <Button
+                    android:id="@+id/btnsalvar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginBottom="128dp"
+                    android:backgroundTint="@color/teal_700"
+                    android:text="SALVAR CONTACTO"
+                    app:cornerRadius="20dp" />
+
+                <Space
+                    android:layout_width="5dp"
+                    android:layout_height="wrap_content" />
+
+                <Button
+                    android:id="@+id/btnsalvados"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="128dp"
+                    android:backgroundTint="@color/teal_700"
+                    android:text="CONTACTOS SALVADOS"
+                    app:cornerRadius="20dp" />
+            </TableRow>
+
+        </TableLayout>
+
+    </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
