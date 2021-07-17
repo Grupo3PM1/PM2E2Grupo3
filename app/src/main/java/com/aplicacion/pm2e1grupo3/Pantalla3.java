@@ -31,7 +31,7 @@ public class Pantalla3 extends FragmentActivity implements OnMapReadyCallback {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        Intent i = getIntent();
+        Intent intent = getIntent();
         id  = getIntent().getExtras().getString("ID");
         nombre  = getIntent().getExtras().getString("Nombre");
         telefono  = getIntent().getExtras().getString("Telefono");

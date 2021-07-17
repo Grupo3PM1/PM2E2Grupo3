@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -106,6 +108,10 @@ public class PantallaActualizar extends AppCompatActivity {
             }
         });
 
+        Permisos();
+    }
+
+    public void Permisos(){
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION,}, 1000);
         } else {
@@ -241,7 +247,22 @@ public class PantallaActualizar extends AppCompatActivity {
             retorno = false;
         }
         if(lat.isEmpty() && lgt.isEmpty()){
-            Toast.makeText(this, "Active su ubicación", Toast.LENGTH_LONG).show();
+
+            AlertDialog.Builder builder= new AlertDialog.Builder(PantallaActualizar.this);
+            builder.setMessage("GPS no está activo");
+            builder.setTitle("Ubicación");
+
+            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+
+                    Permisos();
+                }
+            });
+
+            AlertDialog dialog = builder.create();
+            dialog.show();
+
             retorno = false;
         }
 

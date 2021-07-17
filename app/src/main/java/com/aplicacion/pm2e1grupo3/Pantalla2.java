@@ -131,16 +131,35 @@ public class Pantalla2 extends AppCompatActivity {
         btnActualizar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (SelectedRow==true){
-                    Intent i = new Intent(getApplicationContext(), PantallaActualizar.class);
-                    i.putExtra("ID", Dato);
-                    i.putExtra("Nombre", Nombre);
-                    i.putExtra("Telefono", Telefono);
-                    i.putExtra("Latitud", Latitud);
-                    i.putExtra("Longitud", Longitud);
-                    i.putExtra("Foto", Foto);
-                    startActivity(i);
-                    finish();
+                if (SelectedRow==true) {
+                    AlertDialog.Builder builder= new AlertDialog.Builder(Pantalla2.this);
+                    builder.setMessage("Desea eliminar a "+ Nombre);
+                    builder.setTitle("Eliminar");
+
+                    builder.setPositiveButton("SÍ", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+
+                            Intent intent = new Intent(getApplicationContext(), PantallaActualizar.class);
+                            intent.putExtra("ID", Dato);
+                            intent.putExtra("Nombre", Nombre);
+                            intent.putExtra("Telefono", Telefono);
+                            intent.putExtra("Latitud", Latitud);
+                            intent.putExtra("Longitud", Longitud);
+                            intent.putExtra("Foto", Foto);
+                            startActivity(intent);
+                            finish();
+                        }
+                    });
+
+                    builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                        }
+                    });
+
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
                 }
                 else {
                     Toast.makeText(Pantalla2.this, "Seleccione un registro", Toast.LENGTH_SHORT).show();
