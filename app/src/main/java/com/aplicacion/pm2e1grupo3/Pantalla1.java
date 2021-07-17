@@ -237,6 +237,7 @@ public class Pantalla1 extends AppCompatActivity {
         }
         if(lat.isEmpty() && lgt.isEmpty()){
             Toast.makeText(this, "Active su ubicación", Toast.LENGTH_LONG).show();
+            retorno = false;
         }
 
         return retorno;
