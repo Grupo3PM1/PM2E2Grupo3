@@ -72,12 +72,6 @@ public class PantallaActualizar extends AppCompatActivity {
         nombre  = getIntent().getExtras().getString("Nombre");
         telefono  = getIntent().getExtras().getString("Telefono");
         Foto = getIntent().getExtras().getByteArray("Foto");
-        Bitmap  bitmapFoto = BitmapFactory.decodeByteArray(Foto, 0, Foto.length);
-        ObjImagen.setImageBitmap(bitmapFoto);
-
-
-        byte[] imagebyte = Foto;
-        String encode = Base64.encodeToString(imagebyte, Base64.DEFAULT);
 
         btnsalvar = (Button)findViewById(R.id.btnsalvar);
         btnsalvados = (Button)findViewById(R.id.btnsalvados);
