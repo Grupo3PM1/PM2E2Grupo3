@@ -1,41 +1,46 @@
 package com.aplicacion.pm2e1grupo3;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-import androidx.core.content.FileProvider;
 
 import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.location.LocationProvider;
+import android.os.StrictMode;
 import android.provider.Settings;
-import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
 import android.provider.MediaStore;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import java.io.File;
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 public class Pantalla1 extends AppCompatActivity {
 
@@ -43,11 +48,21 @@ public class Pantalla1 extends AppCompatActivity {
     EditText etnombre, ettelefono, etlatitud, etlongitud;
     ImageView ObjImagen;
     TextView txtlat, txtlong;
+    Bitmap photo;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pantalla1);
+
+        if (android.os.Build.VERSION.SDK_INT > 9)
+        {
+            StrictMode.ThreadPolicy policy = new
+                    StrictMode.ThreadPolicy.Builder().permitAll().build();
+            StrictMode.setThreadPolicy(policy);
+        }
+
 
         btnsalvar = (Button)findViewById(R.id.btnsalvar);
         btnsalvados = (Button)findViewById(R.id.btnsalvados);
@@ -72,6 +87,7 @@ public class Pantalla1 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 validar();
+                aggperson();
 
             }
         });
@@ -218,6 +234,51 @@ public class Pantalla1 extends AppCompatActivity {
         }
 
         return retorno;
+    }
+
+    private void aggperson() {
+
+        String url = RestApiMethod.ApiPostUrl;
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.i("Error en Response", "onResponse: " +  error.getMessage().toString() );
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+
+                HashMap<String, String> parametros = new HashMap<String, String>();
+                parametros.put("nombre",etnombre.getText().toString());
+                parametros.put("telefono",ettelefono.getText().toString());
+                //parametros.put("latitud",Double.valueOf(etlatitud.getText().toString()));
+                parametros.put("latitud",etlatitud.getText().toString());
+                parametros.put("longitud",etlongitud.getText().toString());
+                parametros.put("foto",GetStringImage(ObjImagen));
+                return parametros;
+            }
+
+        };
+        RequestQueue queue = Volley.newRequestQueue(this);
+        queue.add(stringRequest);
+    }
+
+   public static String GetStringImage(ImageView ObjImagen)
+    {
+        Bitmap bitmap = ((BitmapDrawable)ObjImagen.getDrawable()).getBitmap();
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+
+        byte[] imagebyte = stream.toByteArray();
+        String encode = Base64.encodeToString(imagebyte, Base64.DEFAULT);
+        return encode;
+
     }
 
 
