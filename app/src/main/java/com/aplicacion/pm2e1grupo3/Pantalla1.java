@@ -26,6 +26,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -180,12 +181,12 @@ public class Pantalla1 extends AppCompatActivity {
 
         @Override
         public void onProviderDisabled(String provider) {
-            //txtlat.setText("GPS Desactivado");
+            //GPS Desactivado
         }
 
         @Override
         public void onProviderEnabled(String provider) {
-            //txtlat.setText("GPS Activado");
+            //GPS Activado
         }
 
         @Override
@@ -223,6 +224,8 @@ public class Pantalla1 extends AppCompatActivity {
 
         String nom= etnombre.getText().toString();
         String tel= ettelefono.getText().toString();
+        String lat= etlatitud.getText().toString();
+        String lgt= etlongitud.getText().toString();
 
         if(nom.isEmpty()){
             etnombre.setError("DEBE INGRESAR EL NOMBRE");
@@ -231,6 +234,9 @@ public class Pantalla1 extends AppCompatActivity {
         if(tel.isEmpty()){
             ettelefono.setError("DEBE INGRESAR EL NUMERO TELEFONICO");
             retorno = false;
+        }
+        if(lat.isEmpty() && lgt.isEmpty()){
+            Toast.makeText(this, "Active su ubicación", Toast.LENGTH_LONG).show();
         }
 
         return retorno;
