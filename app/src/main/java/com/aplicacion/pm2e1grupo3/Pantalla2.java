@@ -128,7 +128,7 @@ public class Pantalla2 extends AppCompatActivity {
             }
 
             FillList();
-            a = new ArrayAdapter(this, android.R.layout.simple_list_item_single_choice, lista);
+            a = new ArrayAdapter(this, android.R.layout.simple_list_item_single_choice, ArrayLista);
             Lista.setAdapter(a);
         }
         catch (Exception e1){
@@ -141,10 +141,9 @@ public class Pantalla2 extends AppCompatActivity {
 
         ArrayLista = new ArrayList<String>();
 
-        for (int i = 0;  i < ArrayLista.size(); i++){
+        for (int i = 0;  i < lista.size(); i++){
 
-            ArrayLista.add(ArrayLista.get(i).getCp_Nombre() + " | "
-                    +ArrayLista.get(i).getCp_Telefono());
+            ArrayLista.add(lista.get(i).getNombre());
         }
 
     }
