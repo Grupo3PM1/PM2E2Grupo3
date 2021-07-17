@@ -49,10 +49,6 @@
                 app:cornerRadius="20dp" />
         </LinearLayout>
 
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="20dp" />
-
         <EditText
             android:id="@+id/etnombre"
             android:layout_width="327dp"
@@ -104,41 +100,37 @@
             android:layout_width="match_parent"
             android:layout_height="20dp" />
 
-        <TableLayout
+        <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal">
 
-            <TableRow
-                android:layout_width="match_parent"
+            <Button
+                android:id="@+id/btnsalvar"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center_horizontal">
+                android:layout_marginStart="16dp"
+                android:layout_marginBottom="128dp"
+                android:backgroundTint="@color/teal_700"
+                android:text="SALVAR CONTACTO"
+                android:textSize="12sp"
+                app:cornerRadius="20dp" />
 
-                <Button
-                    android:id="@+id/btnsalvar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginBottom="128dp"
-                    android:backgroundTint="@color/teal_700"
-                    android:text="SALVAR CONTACTO"
-                    app:cornerRadius="20dp" />
+            <Space
+                android:layout_width="5dp"
+                android:layout_height="0dp" />
 
-                <Space
-                    android:layout_width="5dp"
-                    android:layout_height="wrap_content" />
-
-                <Button
-                    android:id="@+id/btnsalvados"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginBottom="128dp"
-                    android:backgroundTint="@color/teal_700"
-                    android:text="CONTACTOS SALVADOS"
-                    app:cornerRadius="20dp" />
-            </TableRow>
-
-        </TableLayout>
+            <Button
+                android:id="@+id/btnsalvados"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="128dp"
+                android:backgroundTint="@color/teal_700"
+                android:text="CONTACTOS SALVADOS"
+                android:textSize="12sp"
+                app:cornerRadius="20dp" />
+        </TableRow>
 
     </LinearLayout>
 

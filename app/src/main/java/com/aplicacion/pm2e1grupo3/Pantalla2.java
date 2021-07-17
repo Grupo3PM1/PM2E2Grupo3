@@ -193,7 +193,7 @@ public class Pantalla2 extends AppCompatActivity {
                 l.setTelefono(jsonAreglo.getJSONObject(i).getString("telefono"));
                 l.setLatitud(jsonAreglo.getJSONObject(i).getString("latitud"));
                 l.setLongitud(jsonAreglo.getJSONObject(i).getString("longitud"));
-                //l.setImage(jsonAreglo.getJSONObject(i).get("foto"));
+                l.setImage(jsonAreglo.getJSONObject(i).get("foto"));
                 lista.add(l);
             }
 
