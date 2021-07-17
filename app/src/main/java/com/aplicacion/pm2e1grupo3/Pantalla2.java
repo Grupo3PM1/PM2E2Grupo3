@@ -26,6 +26,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.aplicacion.pm2e1grupo3.tablas.lista;
+
 import java.util.ArrayList;
 
 public class Pantalla2 extends AppCompatActivity {
@@ -33,7 +35,7 @@ public class Pantalla2 extends AppCompatActivity {
     Button btnregresar;
     EditText buscar;
     ListView Lista;
-    ArrayList<String> ArrayLista;
+    ArrayList<lista> ArrayLista;
     ArrayList<String> ArrayItem;
 
     @Override
@@ -89,6 +91,19 @@ public class Pantalla2 extends AppCompatActivity {
 
     private void ObtenerLista() {
 
+        lista Item = null;
+        ArrayLista = new ArrayList<lista>();
+
+        while (){
+            Item = new lista();
+            Item.setID(cursor.getInt(0));
+            Item.setNombre(cursor.getString(2));
+            Item.setLatitud(cursor.getString(3));
+            Item.setLongitud(cursor.getString(4));
+            Item.setImage(cursor.getString(5));
+            ArrayLista.add(Item);
+        }
+
         // AQUÍ SE OBTENDRAN LOS DATOS DIRECTAMENTE DESDE LA BD CON CONSULTA SQL
 
         FillList();
@@ -100,7 +115,7 @@ public class Pantalla2 extends AppCompatActivity {
 
     }
 
-    /*private void buscarProducto(String URL) {
+    private void buscarProducto(String URL) {
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(URL, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
@@ -122,5 +137,5 @@ public class Pantalla2 extends AppCompatActivity {
         });
         RequestQueue queue = Volley.newRequestQueue(this);
         queue.add(jsonArrayRequest);
-    }*/
+    }
 }
