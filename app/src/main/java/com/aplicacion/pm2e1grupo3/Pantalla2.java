@@ -33,6 +33,7 @@ public class Pantalla2 extends AppCompatActivity {
     Button btnregresar;
     EditText buscar;
     ListView Lista;
+    ArrayList<String> ArrayLista;
     ArrayList<String> ArrayItem;
 
     @Override
@@ -53,7 +54,7 @@ public class Pantalla2 extends AppCompatActivity {
         ObtenerLista();  //FUNCION PARA EXTRAER DATOS DE LA BD
 
         Lista = (ListView) findViewById(R.id.lista);
-        ArrayAdapter<String> adp = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_single_choice, ArrayContactos);
+        ArrayAdapter<String> adp = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_single_choice, ArrayLista);
         Lista.setAdapter(adp);
 
         buscar = (EditText) findViewById(R.id.txtbuscar);
