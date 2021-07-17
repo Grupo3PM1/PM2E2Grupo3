@@ -140,8 +140,6 @@ public class Pantalla1 extends AppCompatActivity {
                         loc.getLatitude(), loc.getLongitude(), 1);
                 if (!list.isEmpty()) {
                     Address DirCalle = list.get(0);
-                    txtlong.setText("Mi direccion es: \n"
-                            + DirCalle.getAddressLine(0));
                 }
 
             } catch (IOException e) {
