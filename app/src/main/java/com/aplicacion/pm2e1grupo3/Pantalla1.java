@@ -39,7 +39,7 @@ import java.util.Locale;
 
 public class Pantalla1 extends AppCompatActivity {
 
-    Button btnsalvar, btnsalvados, btnmapa, btnfoto;
+    Button btnsalvar, btnsalvados, btnfoto;
     EditText etnombre, ettelefono, etlatitud, etlongitud;
     ImageView ObjImagen;
     TextView txtlat, txtlong;
@@ -49,7 +49,6 @@ public class Pantalla1 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pantalla1);
 
-        btnmapa = (Button)findViewById(R.id.btnmapa);
         btnsalvar = (Button)findViewById(R.id.btnsalvar);
         btnsalvados = (Button)findViewById(R.id.btnsalvados);
         etnombre = (EditText)findViewById(R.id.etnombre);
@@ -67,14 +66,6 @@ public class Pantalla1 extends AppCompatActivity {
             public void onClick(View v)
             {
                 abrirCamara();
-            }
-        });
-
-        btnmapa.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent mapa = new Intent(getApplicationContext(), MapsActivity.class);
-                startActivity(mapa);
             }
         });
 

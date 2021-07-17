@@ -16,29 +16,15 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <Button
-        android:id="@+id/btnmapa"
-        android:layout_width="158dp"
-        android:layout_height="57dp"
-        android:layout_marginBottom="44dp"
-        android:backgroundTint="@color/teal_700"
-        android:text="OBTENER UBICACION"
-        app:cornerRadius="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.075"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
         android:id="@+id/btnsalvar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="68dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="60dp"
         android:backgroundTint="@color/teal_700"
         android:text="SALVAR CONTACTO"
         app:cornerRadius="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.815"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
@@ -58,16 +44,13 @@
         android:id="@+id/btnsalvados"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="25dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="60dp"
         android:backgroundTint="@color/teal_700"
         android:text="CONTACTOS SALVADOS"
         app:cornerRadius="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.876"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnsalvar"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
         android:id="@+id/txtnombre"
