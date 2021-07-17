@@ -10,6 +10,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -18,10 +19,13 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
@@ -31,6 +35,9 @@ import org.json.JSONObject;
 import com.aplicacion.pm2e1grupo3.tablas.lista;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
 import com.loopj.android.http.*;
 
 import cz.msebera.android.httpclient.Header;
@@ -93,7 +100,7 @@ public class Pantalla2 extends AppCompatActivity {
                 Nombre = lista.get(position).getNombre();
                 Telefono = lista.get(position).getTelefono();
                 Latitud = lista.get(position).getLatitud();
-                Longitud = lista.get(position).getLatitud();
+                Longitud = lista.get(position).getLongitud();
                 SelectedRow = true;
             }
         });
@@ -210,6 +217,28 @@ public class Pantalla2 extends AppCompatActivity {
     }
 
     private void EliminarItem() {
-        // AQUÍ IRÁ EL CODIGO PARA ELIMINAR REGISTRO DE LA BD
+        String URL = RestApiMethod.ApiDeleteUrl;
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Toast.makeText(getApplicationContext(),"EL USUARIO FUE ELIMINADO", Toast.LENGTH_SHORT).show();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getApplicationContext(),error.toString() , Toast.LENGTH_SHORT).show();
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                HashMap<String, String> parametros = new HashMap<String, String>();
+                parametros.put("id",Dato);
+                return parametros;
+            }
+
+        };
+        RequestQueue queue = Volley.newRequestQueue(this);
+        queue.add(stringRequest);
     }
 }

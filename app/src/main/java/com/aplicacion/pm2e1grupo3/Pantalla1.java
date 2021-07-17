@@ -218,6 +218,10 @@ public class Pantalla1 extends AppCompatActivity {
         }
     }
 
+
+
+
+
     public boolean validar(){
         boolean retorno= true;
 
@@ -232,6 +236,12 @@ public class Pantalla1 extends AppCompatActivity {
             ettelefono.setError("DEBE INGRESAR EL NUMERO TELEFONICO");
             retorno = false;
         }
+        if(tel.isEmpty()){
+            ettelefono.setError("DEBE INGRESAR EL NUMERO TELEFONICO");
+            retorno = false;
+        }
+
+
 
         return retorno;
     }
