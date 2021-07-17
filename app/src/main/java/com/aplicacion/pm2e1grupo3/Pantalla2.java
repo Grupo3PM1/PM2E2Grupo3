@@ -2,6 +2,8 @@ package com.aplicacion.pm2e1grupo3;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -95,6 +97,42 @@ public class Pantalla2 extends AppCompatActivity {
                 SelectedRow = true;
             }
         });
+
+        Button btnDelete = (Button) findViewById(R.id.btneliminar);
+        btnDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (SelectedRow==true) {
+                    AlertDialog.Builder builder= new AlertDialog.Builder(Pantalla2.this);
+                    builder.setMessage("Desea eliminar a "+ Nombre);
+                    builder.setTitle("Eliminar");
+
+                    builder.setPositiveButton("SÍ", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+
+                            EliminarItem();
+
+                            Intent intent = new Intent(Pantalla2.this, Pantalla2.class);
+                            startActivity(intent);
+                            finish();
+                        }
+                    });
+
+                    builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                        }
+                    });
+
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
+                }
+                else {
+                    Toast.makeText(Pantalla2.this, "Seleccione un registro", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 
 
@@ -149,5 +187,9 @@ public class Pantalla2 extends AppCompatActivity {
 
             ArrayLista.add(lista.get(i).getNombre());
         }
+    }
+
+    private void EliminarItem() {
+        // AQUÍ IRÁ EL CODIGO PARA ELIMINAR REGISTRO DE LA BD
     }
 }
