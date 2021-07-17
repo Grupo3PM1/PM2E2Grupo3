@@ -13,21 +13,21 @@ public class lista {
 
 
 
-   /* public lista(Integer ID, String nombre, String telefono, String latitud, String longitud, byte[] image) {
+    public lista(Integer ID, String nombre, String telefono, String latitud, String longitud, byte[] image) {
         this.ID = ID;
         this.nombre = nombre;
         this.telefono = telefono;
         this.latitud = latitud;
         this.longitud = longitud;
         this.image = image;
-    }*/
-    public lista(Integer ID, String nombre, String telefono, String latitud, String longitud) {
+    }
+    /*public lista(Integer ID, String nombre, String telefono, String latitud, String longitud) {
         this.ID = ID;
         this.nombre = nombre;
         this.telefono = telefono;
         this.latitud = latitud;
         this.longitud = longitud;
-    }
+    }*/
 
     public Integer getID() {
         return ID;

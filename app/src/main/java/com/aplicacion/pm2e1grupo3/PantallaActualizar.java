@@ -50,6 +50,7 @@ public class PantallaActualizar extends AppCompatActivity {
     TextView txtlat, txtlong;
     Bitmap photo;
     String id, nombre, telefono;
+    byte [] Foto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +68,10 @@ public class PantallaActualizar extends AppCompatActivity {
         id  = getIntent().getExtras().getString("ID");
         nombre  = getIntent().getExtras().getString("Nombre");
         telefono  = getIntent().getExtras().getString("Telefono");
+        Foto = getIntent().getExtras().getByteArray("Foto");
+
+        byte[] imagebyte = Foto;
+        String encode = Base64.encodeToString(imagebyte, Base64.DEFAULT);
 
         btnsalvar = (Button)findViewById(R.id.btnsalvar);
         btnsalvados = (Button)findViewById(R.id.btnsalvados);
@@ -74,6 +79,9 @@ public class PantallaActualizar extends AppCompatActivity {
         ettelefono = (EditText)findViewById(R.id.ettelefono);
         etlatitud = (EditText)findViewById(R.id.etlatitud);
         etlongitud = (EditText)findViewById(R.id.etlongitud);
+
+        etlatitud.setEnabled(false);
+        etlongitud.setEnabled(false);
 
         etnombre.setText(nombre);
         ettelefono.setText(telefono);

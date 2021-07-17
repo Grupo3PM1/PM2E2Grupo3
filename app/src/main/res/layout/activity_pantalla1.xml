@@ -108,12 +108,12 @@
             <Button
                 android:id="@+id/btnsalvar"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="46dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginBottom="128dp"
                 android:backgroundTint="@color/teal_700"
                 android:text="SALVAR CONTACTO"
-                android:textSize="12sp"
+                android:textSize="10sp"
                 app:cornerRadius="20dp" />
 
             <Space
@@ -123,12 +123,12 @@
             <Button
                 android:id="@+id/btnsalvados"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="46dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="128dp"
                 android:backgroundTint="@color/teal_700"
                 android:text="CONTACTOS SALVADOS"
-                android:textSize="12sp"
+                android:textSize="10sp"
                 app:cornerRadius="20dp" />
         </TableRow>
 

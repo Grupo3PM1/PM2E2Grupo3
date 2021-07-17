@@ -72,6 +72,8 @@ public class Pantalla1 extends AppCompatActivity {
         etlatitud = (EditText)findViewById(R.id.etlatitud);
         etlongitud = (EditText)findViewById(R.id.etlongitud);
 
+        etlatitud.setEnabled(false);
+        etlongitud.setEnabled(false);
 
         ObjImagen = (ImageView) findViewById(R.id.fotografia);
         btnfoto = (Button) findViewById(R.id.btnfoto);

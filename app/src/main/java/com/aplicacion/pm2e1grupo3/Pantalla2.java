@@ -49,9 +49,10 @@ public class Pantalla2 extends AppCompatActivity {
     ListView Lista;
     ArrayAdapter<lista> a;
     ArrayList <lista> lista;
-    ArrayList<String> ArrayLista;
+    ArrayList ArrayLista;
     private AsyncHttpClient client;
     private String Dato, Nombre, Telefono, Latitud, Longitud;
+    private byte [] Foto;
     private Boolean SelectedRow = false;
 
     @Override
@@ -101,6 +102,7 @@ public class Pantalla2 extends AppCompatActivity {
                 Telefono = lista.get(position).getTelefono();
                 Latitud = lista.get(position).getLatitud();
                 Longitud = lista.get(position).getLongitud();
+                Foto = lista.get(position).getImage();
                 SelectedRow = true;
             }
         });
@@ -136,6 +138,7 @@ public class Pantalla2 extends AppCompatActivity {
                     i.putExtra("Telefono", Telefono);
                     i.putExtra("Latitud", Latitud);
                     i.putExtra("Longitud", Longitud);
+                    i.putExtra("Foto", Foto);
                     startActivity(i);
                     finish();
                 }
@@ -213,7 +216,8 @@ public class Pantalla2 extends AppCompatActivity {
                 l.setTelefono(jsonAreglo.getJSONObject(i).getString("telefono"));
                 l.setLatitud(jsonAreglo.getJSONObject(i).getString("latitud"));
                 l.setLongitud(jsonAreglo.getJSONObject(i).getString("longitud"));
-                //l.setImage(jsonAreglo.getJSONObject(i).get("foto"));
+                byte[] fotob = jsonAreglo.getJSONObject(i).getString("foto").getBytes();
+                l.setImage(fotob);
                 lista.add(l);
             }
 
@@ -228,11 +232,11 @@ public class Pantalla2 extends AppCompatActivity {
 
     private void FillList() {
 
-        ArrayLista = new ArrayList<String>();
+        ArrayLista = new ArrayList();
 
         for (int i = 0;  i < lista.size(); i++){
 
-            ArrayLista.add(lista.get(i).getNombre());
+            ArrayLista.add(lista.get(i).getImage()+lista.get(i).getNombre()+lista.get(i).getTelefono());
         }
     }
 
