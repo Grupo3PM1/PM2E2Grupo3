@@ -143,6 +143,7 @@ public class Pantalla2 extends AppCompatActivity {
                     intent.putExtra("Foto", Foto);
                     startActivity(intent);
                     finish();
+                }
                 else {
                     Toast.makeText(Pantalla2.this, "Seleccione un registro", Toast.LENGTH_SHORT).show();
                 }
