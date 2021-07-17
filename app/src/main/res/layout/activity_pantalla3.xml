@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CoordinatorLayout
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:sothree="http://schemas.android.com/tools"
+        android:id="@+id/drawer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <CoordinatorLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <fragment
+                    android:id="@+id/map"
+                    android:name="com.google.android.gms.maps.SupportMapFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    sothree:context="com.example.codingmountain.googlemap_clone_bottomsheetlayout.MapsActivity" />
+            </CoordinatorLayout>
+        </LinearLayout>
+    </DrawerLayout>
+    <include
+        android:id="@+id/bottomJsoft"
+        layout="@layout/bottomsheet_layout"></include>
+</CoordinatorLayout>

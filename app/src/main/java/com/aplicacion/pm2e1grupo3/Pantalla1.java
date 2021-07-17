@@ -68,8 +68,8 @@ public class Pantalla1 extends AppCompatActivity {
         String lgt = getIntent().getStringExtra("longitud");
         String ltt = getIntent().getStringExtra("latitud");
 
-        etlongitud.setText("" + lgt);
-        etlatitud.setText("" + ltt);
+        etlongitud.setText(lgt);
+        etlatitud.setText(ltt);
 
         btnsalvar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,7 +82,8 @@ public class Pantalla1 extends AppCompatActivity {
         btnsalvados.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent mapa = new Intent(getApplicationContext(), Pantalla3.class);
+                startActivity(mapa);
             }
         });
 
