@@ -42,12 +42,16 @@ public class Pantalla2 extends AppCompatActivity {
     ArrayList <lista> lista;
     ArrayList<String> ArrayLista;
     private AsyncHttpClient client;
+    private String Dato, Nombre, Telefono, Latitud, Longitud;
+    private Boolean SelectedRow = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pantalla2);
         client = new AsyncHttpClient();
+
+        Lista = (ListView) findViewById(R.id.lista);
 
         btnregresar = (Button)findViewById(R.id.btnregresar);
         btnregresar.setOnClickListener(new View.OnClickListener() {
@@ -58,10 +62,7 @@ public class Pantalla2 extends AppCompatActivity {
             }
         });
 
-
         ObtenerLista();  //FUNCION PARA EXTRAER DATOS DE LA BD
-        Lista = (ListView) findViewById(R.id.lista);
-
 
         buscar = (EditText) findViewById(R.id.txtbuscar);
         buscar.addTextChangedListener(new TextWatcher() {
@@ -86,8 +87,12 @@ public class Pantalla2 extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 view.setSelected(true);
 
-                // AQUÍ SE OBTENDRAN LOS DATOS DEL ITEM SELECCIONADO
-
+                Dato = lista.get(position).getID().toString();
+                Nombre = lista.get(position).getNombre();
+                Telefono = lista.get(position).getTelefono();
+                Latitud = lista.get(position).getLatitud();
+                Longitud = lista.get(position).getLatitud();
+                SelectedRow = true;
             }
         });
     }
