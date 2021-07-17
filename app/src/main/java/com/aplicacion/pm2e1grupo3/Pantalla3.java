@@ -3,6 +3,7 @@ package com.aplicacion.pm2e1grupo3;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -23,10 +24,22 @@ public class Pantalla3 extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
     private ActivityPantalla3Binding binding;
+    private String id, nombre, telefono, latitud, longitud;
+    private Double lat, lgt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Intent i = getIntent();
+        id  = getIntent().getExtras().getString("ID");
+        nombre  = getIntent().getExtras().getString("Nombre");
+        telefono  = getIntent().getExtras().getString("Telefono");
+        latitud  = getIntent().getExtras().getString("Latitud");
+        longitud  = getIntent().getExtras().getString("Longitud");
+
+        lat = Double.parseDouble(latitud);
+        lgt = Double.parseDouble(longitud);
 
         binding = ActivityPantalla3Binding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -51,8 +64,8 @@ public class Pantalla3 extends FragmentActivity implements OnMapReadyCallback {
         mMap = googleMap;
 
         // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
+        LatLng sydney = new LatLng(lat, lgt);
+        mMap.addMarker(new MarkerOptions().position(sydney).title(nombre+"\n"+telefono));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
     }
 }

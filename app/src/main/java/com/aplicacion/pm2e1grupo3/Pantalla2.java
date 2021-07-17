@@ -98,6 +98,26 @@ public class Pantalla2 extends AppCompatActivity {
             }
         });
 
+        Button btnMapa = (Button) findViewById(R.id.btnverubicacion);
+        btnMapa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (SelectedRow==true){
+                    Intent i = new Intent(getApplicationContext(), Pantalla3.class);
+                    i.putExtra("ID", Dato);
+                    i.putExtra("Nombre", Nombre);
+                    i.putExtra("Telefono", Telefono);
+                    i.putExtra("Latitud", Latitud);
+                    i.putExtra("Longitud", Longitud);
+                    startActivity(i);
+                    finish();
+                }
+                else {
+                    Toast.makeText(Pantalla2.this, "Seleccione un registro", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
         Button btnDelete = (Button) findViewById(R.id.btneliminar);
         btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
