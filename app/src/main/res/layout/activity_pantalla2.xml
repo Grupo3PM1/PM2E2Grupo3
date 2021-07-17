@@ -70,7 +70,8 @@
                 android:id="@+id/btnverubicacion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Ver Contacto Ubicacion" />
+                android:text="Ver Contacto Ubicacion"
+                android:textSize="10sp" />
         </TableRow>
 
         <TableRow
@@ -82,7 +83,19 @@
                 android:id="@+id/btneliminar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Eliminar Contacto" />
+                android:text="Eliminar Contacto"
+                android:textSize="10sp" />
+
+            <Space
+                android:layout_width="5dp"
+                android:layout_height="0dp" />
+
+            <Button
+                android:id="@+id/btnactualizar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Actualizar Contacto"
+                android:textSize="10sp" />
 
         </TableRow>
 
@@ -91,11 +104,6 @@
             android:layout_height="match_parent"
             android:gravity="center">
 
-            <Button
-                android:id="@+id/btnactualizar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Actualizar Contacto" />
         </TableRow>
 
     </TableLayout>
