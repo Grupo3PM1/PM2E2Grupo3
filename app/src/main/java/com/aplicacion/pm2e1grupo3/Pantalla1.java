@@ -298,7 +298,7 @@ public class Pantalla1 extends AppCompatActivity {
         RequestQueue queue = Volley.newRequestQueue(this);
         queue.add(stringRequest);
 
-        if(retorno = true){
+        if(retorno = false){
             Intent intent = new Intent(Pantalla1.this, Pantalla1.class);
             startActivity(intent);
             finish();

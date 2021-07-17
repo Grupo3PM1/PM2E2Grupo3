@@ -7,6 +7,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -231,8 +233,10 @@ public class Pantalla2 extends AppCompatActivity {
         ArrayLista = new ArrayList();
 
         for (int i = 0;  i < lista.size(); i++){
+                    byte [] encodeByte = Base64.decode(lista.get(i).getImage(),Base64.DEFAULT);
+                    Bitmap bitmap = BitmapFactory.decodeByteArray(encodeByte, 0, encodeByte.length);
 
-            ArrayLista.add(lista.get(i).getImage()+" | "+lista.get(i).getNombre()+"\n"+lista.get(i).getTelefono());
+            ArrayLista.add(bitmap+" | "+lista.get(i).getNombre()+" | "+lista.get(i).getTelefono());
         }
     }
 
