@@ -125,6 +125,26 @@ public class Pantalla2 extends AppCompatActivity {
             }
         });
 
+        Button btnActualizar = (Button) findViewById(R.id.btnactualizar);
+        btnActualizar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (SelectedRow==true){
+                    Intent i = new Intent(getApplicationContext(), PantallaActualizar.class);
+                    i.putExtra("ID", Dato);
+                    i.putExtra("Nombre", Nombre);
+                    i.putExtra("Telefono", Telefono);
+                    i.putExtra("Latitud", Latitud);
+                    i.putExtra("Longitud", Longitud);
+                    startActivity(i);
+                    finish();
+                }
+                else {
+                    Toast.makeText(Pantalla2.this, "Seleccione un registro", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
         Button btnDelete = (Button) findViewById(R.id.btneliminar);
         btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -193,7 +213,7 @@ public class Pantalla2 extends AppCompatActivity {
                 l.setTelefono(jsonAreglo.getJSONObject(i).getString("telefono"));
                 l.setLatitud(jsonAreglo.getJSONObject(i).getString("latitud"));
                 l.setLongitud(jsonAreglo.getJSONObject(i).getString("longitud"));
-                l.setImage(jsonAreglo.getJSONObject(i).get("foto"));
+                //l.setImage(jsonAreglo.getJSONObject(i).get("foto"));
                 lista.add(l);
             }
 
