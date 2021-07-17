@@ -25,8 +25,9 @@
         android:id="@+id/lista"
         android:layout_width="match_parent"
         android:layout_height="371dp"
-        android:choiceMode="singleChoice"/>
-
+        android:choiceMode="singleChoice"
+        android:listSelector="@drawable/bg_key">
+    </ListView>
     <Button
         android:id="@+id/btneliminar"
         android:layout_width="match_parent"
