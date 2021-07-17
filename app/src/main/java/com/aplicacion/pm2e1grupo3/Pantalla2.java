@@ -39,6 +39,8 @@ public class Pantalla2 extends AppCompatActivity {
     EditText buscar;
     ListView Lista;
     ArrayAdapter<lista> a;
+    ArrayList <lista> lista;
+    ArrayList<String> ArrayLista;
     private AsyncHttpClient client;
 
     @Override
@@ -111,7 +113,7 @@ public class Pantalla2 extends AppCompatActivity {
     }
 
     private void listarRegistros(String respuesta){
-        ArrayList <lista> lista = new ArrayList<lista>();
+        lista = new ArrayList<lista>();
         try {
             JSONArray jsonAreglo = new JSONArray(respuesta);
             for(int i=0;i<jsonAreglo.length();i++){
@@ -125,6 +127,7 @@ public class Pantalla2 extends AppCompatActivity {
                 lista.add(l);
             }
 
+            FillList();
             a = new ArrayAdapter(this, android.R.layout.simple_list_item_single_choice, lista);
             Lista.setAdapter(a);
         }
@@ -133,11 +136,16 @@ public class Pantalla2 extends AppCompatActivity {
         }
 
     }
-    //FillList();
 
     private void FillList() {
 
-        // AQUÍ SE VISUALIZARAN LOS ITEMS
+        ArrayLista = new ArrayList<String>();
+
+        for (int i = 0;  i < ArrayLista.size(); i++){
+
+            ArrayLista.add(ArrayLista.get(i).getCp_Nombre() + " | "
+                    +ArrayLista.get(i).getCp_Telefono());
+        }
 
     }
 
